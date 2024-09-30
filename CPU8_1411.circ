@@ -36,7 +36,11 @@
 </a>
     </tool>
   </lib>
-  <lib desc="#I/O" name="6"/>
+  <lib desc="#I/O" name="6">
+    <tool name="RGB Video">
+      <a name="fixed" val="0#888 RGB (24 bit)"/>
+    </tool>
+  </lib>
   <lib desc="#Analog" name="7"/>
   <lib desc="#Audio" name="8"/>
   <lib desc="#BFH-Praktika" name="9"/>
@@ -511,7 +515,7 @@
     <wire from="(150,50)" to="(150,70)"/>
     <wire from="(160,40)" to="(170,40)"/>
   </circuit>
-  <circuit name="3_2_BReg">
+  <circuit name="3_2_8Reg">
     <a name="appearance" val="custom"/>
     <appear>
       <rect fill="none" height="65" stroke="#000000" stroke-width="2" width="100" x="50" y="50"/>
@@ -599,10 +603,10 @@
       <a name="facing" val="south"/>
       <a name="width" val="8"/>
     </comp>
-    <comp loc="(370,200)" name="3_2_BReg">
+    <comp loc="(370,200)" name="3_2_8Reg">
       <a name="label" val="RA"/>
     </comp>
-    <comp loc="(700,200)" name="3_2_BReg"/>
+    <comp loc="(700,200)" name="3_2_8Reg"/>
     <wire from="(120,130)" to="(120,220)"/>
     <wire from="(120,130)" to="(580,130)"/>
     <wire from="(130,260)" to="(130,300)"/>
@@ -1819,6 +1823,7 @@
     <wire from="(70,190)" to="(150,190)"/>
   </circuit>
   <circuit name="Stepper">
+    <a name="appearance" val="custom"/>
     <appear>
       <rect fill="none" height="50" stroke="#000000" stroke-width="2" width="180" x="200" y="60"/>
       <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="206" y="80">clk</text>
@@ -2173,6 +2178,7 @@
     <wire from="(400,140)" to="(400,190)"/>
   </circuit>
   <circuit name="CLK">
+    <a name="appearance" val="custom"/>
     <appear>
       <rect fill="none" height="65" stroke="#000000" stroke-width="2" width="51" x="99" y="50"/>
       <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="end" x="145" y="80">clk</text>
@@ -2237,6 +2243,34 @@
     <wire from="(270,160)" to="(280,160)"/>
   </circuit>
   <circuit name="test_AddComtrol">
+    <appear>
+      <rect fill="none" height="120" stroke="#000000" stroke-width="2" width="440" x="30" y="60"/>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="end" x="147" y="71">TMP_S</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="end" x="211" y="71">R0_E</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="end" x="128" y="168">ACC_S</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="end" x="280" y="70">R1_E</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="end" x="188" y="71">R0_S</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="end" x="172" y="168">ACC_E</text>
+      <text dominant-baseline="top" font-family="SansSerif" font-size="12" text-anchor="middle" x="263" y="128">Control Unit</text>
+      <visible-led height="10" path="/LED(170,110)" stroke-width="0" width="10" x="159" y="89"/>
+      <visible-led height="10" path="/LED(170,220)" stroke-width="0" width="10" x="80" y="90"/>
+      <visible-led height="10" path="/LED(280,110)" stroke-width="0" width="10" x="95" y="89"/>
+      <visible-led height="10" path="/LED(300,110)" stroke-width="0" width="10" x="105" y="89"/>
+      <visible-led height="10" path="/LED(320,110)" stroke-width="0" width="10" x="115" y="89"/>
+      <visible-led height="10" path="/LED(360,110)" stroke-width="0" width="10" x="125" y="89"/>
+      <visible-led height="10" path="/LED(340,110)" stroke-width="0" width="10" x="135" y="89"/>
+      <visible-led height="10" path="/LED(380,110)" stroke-width="0" width="10" x="145" y="89"/>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="12" text-anchor="middle" x="85" y="83">e</text>
+      <text dominant-baseline="central" font-family="SansSerif" font-size="12" text-anchor="middle" x="164" y="83">s</text>
+      <rect fill="none" height="12" stroke="#000000" width="62" x="94" y="88"/>
+      <circ-port height="10" pin="510,340" width="10" x="125" y="55"/>
+      <circ-port height="10" pin="100,350" width="10" x="195" y="55"/>
+      <circ-port height="10" pin="510,380" width="10" x="115" y="175"/>
+      <circ-port height="10" pin="100,390" width="10" x="265" y="55"/>
+      <circ-port height="10" pin="510,420" width="10" x="175" y="55"/>
+      <circ-port height="10" pin="100,430" width="10" x="155" y="175"/>
+      <circ-anchor facing="east" height="6" width="6" x="387" y="97"/>
+    </appear>
     <comp lib="1" loc="(100,350)" name="Pin">
       <a name="label" val="R0_E"/>
       <a name="type" val="output"/>
@@ -2259,23 +2293,23 @@
     <comp lib="1" loc="(200,180)" name="Tunnel">
       <a name="label" val="CLK_E"/>
     </comp>
-    <comp lib="1" loc="(320,320)" name="Tunnel">
+    <comp lib="1" loc="(430,320)" name="Tunnel">
       <a name="facing" val="south"/>
       <a name="label" val="CLK_S"/>
     </comp>
-    <comp lib="1" loc="(400,340)" name="Pin">
+    <comp lib="1" loc="(510,340)" name="Pin">
       <a name="facing" val="west"/>
       <a name="label" val="TMP_S"/>
       <a name="labelloc" val="east"/>
       <a name="type" val="output"/>
     </comp>
-    <comp lib="1" loc="(400,380)" name="Pin">
+    <comp lib="1" loc="(510,380)" name="Pin">
       <a name="facing" val="west"/>
       <a name="label" val="ACC_S"/>
       <a name="labelloc" val="east"/>
       <a name="type" val="output"/>
     </comp>
-    <comp lib="1" loc="(400,420)" name="Pin">
+    <comp lib="1" loc="(510,420)" name="Pin">
       <a name="facing" val="west"/>
       <a name="label" val="R0_S"/>
       <a name="labelloc" val="east"/>
@@ -2293,27 +2327,298 @@
       <a name="facing" val="west"/>
       <a name="size" val="30"/>
     </comp>
-    <comp lib="2" loc="(370,340)" name="AND Gate">
+    <comp lib="2" loc="(480,340)" name="AND Gate">
       <a name="size" val="30"/>
     </comp>
-    <comp lib="2" loc="(370,380)" name="AND Gate">
+    <comp lib="2" loc="(480,380)" name="AND Gate">
       <a name="size" val="30"/>
     </comp>
-    <comp lib="2" loc="(370,420)" name="AND Gate">
+    <comp lib="2" loc="(480,420)" name="AND Gate">
       <a name="size" val="30"/>
     </comp>
-    <comp loc="(160,150)" name="CLK"/>
+    <comp lib="6" loc="(170,110)" name="LED">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="6" loc="(170,220)" name="LED">
+      <a name="facing" val="north"/>
+    </comp>
+    <comp lib="6" loc="(280,110)" name="LED">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="6" loc="(300,110)" name="LED">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="6" loc="(320,110)" name="LED">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="6" loc="(340,110)" name="LED">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="6" loc="(360,110)" name="LED">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="6" loc="(380,110)" name="LED">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp loc="(110,150)" name="CLK"/>
     <comp loc="(420,150)" name="Stepper"/>
     <wire from="(100,350)" to="(130,350)"/>
     <wire from="(100,390)" to="(130,390)"/>
     <wire from="(100,430)" to="(130,430)"/>
-    <wire from="(200,160)" to="(250,160)"/>
-    <wire from="(370,340)" to="(400,340)"/>
-    <wire from="(370,380)" to="(400,380)"/>
-    <wire from="(370,420)" to="(400,420)"/>
+    <wire from="(150,140)" to="(170,140)"/>
+    <wire from="(150,160)" to="(250,160)"/>
+    <wire from="(150,180)" to="(170,180)"/>
+    <wire from="(160,340)" to="(360,340)"/>
+    <wire from="(160,360)" to="(180,360)"/>
+    <wire from="(160,380)" to="(340,380)"/>
+    <wire from="(160,400)" to="(180,400)"/>
+    <wire from="(160,420)" to="(380,420)"/>
+    <wire from="(160,440)" to="(180,440)"/>
+    <wire from="(170,110)" to="(170,140)"/>
+    <wire from="(170,140)" to="(200,140)"/>
+    <wire from="(170,180)" to="(170,220)"/>
+    <wire from="(170,180)" to="(200,180)"/>
+    <wire from="(180,320)" to="(180,360)"/>
+    <wire from="(180,360)" to="(180,400)"/>
+    <wire from="(180,400)" to="(180,440)"/>
+    <wire from="(280,110)" to="(280,190)"/>
+    <wire from="(300,110)" to="(300,190)"/>
+    <wire from="(320,110)" to="(320,190)"/>
+    <wire from="(340,110)" to="(340,190)"/>
+    <wire from="(340,190)" to="(340,330)"/>
+    <wire from="(340,330)" to="(340,380)"/>
+    <wire from="(340,330)" to="(450,330)"/>
+    <wire from="(340,380)" to="(340,450)"/>
+    <wire from="(360,110)" to="(360,190)"/>
+    <wire from="(360,190)" to="(360,340)"/>
+    <wire from="(360,340)" to="(360,370)"/>
+    <wire from="(360,370)" to="(360,450)"/>
+    <wire from="(360,370)" to="(450,370)"/>
+    <wire from="(380,110)" to="(380,190)"/>
+    <wire from="(380,190)" to="(380,410)"/>
+    <wire from="(380,410)" to="(380,420)"/>
+    <wire from="(380,410)" to="(450,410)"/>
+    <wire from="(380,420)" to="(380,450)"/>
     <wire from="(400,190)" to="(400,220)"/>
     <wire from="(400,220)" to="(460,220)"/>
     <wire from="(430,160)" to="(460,160)"/>
+    <wire from="(430,320)" to="(430,350)"/>
+    <wire from="(430,350)" to="(430,390)"/>
+    <wire from="(430,350)" to="(450,350)"/>
+    <wire from="(430,390)" to="(430,430)"/>
+    <wire from="(430,390)" to="(450,390)"/>
+    <wire from="(430,430)" to="(450,430)"/>
     <wire from="(460,160)" to="(460,220)"/>
+    <wire from="(480,340)" to="(510,340)"/>
+    <wire from="(480,380)" to="(510,380)"/>
+    <wire from="(480,420)" to="(510,420)"/>
+  </circuit>
+  <circuit name="R0">
+    <a name="appearance" val="custom"/>
+    <appear>
+      <rect fill="none" height="40" stroke="#000000" stroke-width="2" width="61" x="169" y="60"/>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="188" y="70">i</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="188" y="90">s</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="207" y="90">e</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="end" x="213" y="69">o</text>
+      <text dominant-baseline="top" font-family="SansSerif" font-size="12" text-anchor="middle" x="200" y="74">R0</text>
+      <visible-register height="10" path="/Register(320,140)" stroke-width="0" width="13" x="193" y="65"/>
+      <circ-port height="8" pin="230,140" width="8" x="186" y="56"/>
+      <circ-port height="8" pin="230,180" width="8" x="186" y="96"/>
+      <circ-port height="8" pin="380,190" width="8" x="206" y="96"/>
+      <circ-port height="10" pin="520,150" width="10" x="205" y="55"/>
+      <circ-anchor facing="east" height="6" width="6" x="227" y="97"/>
+    </appear>
+    <comp lib="1" loc="(230,140)" name="Pin">
+      <a name="label" val="i"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="1" loc="(230,180)" name="Pin">
+      <a name="label" val="s"/>
+    </comp>
+    <comp lib="1" loc="(290,190)" name="Constant">
+      <a name="value" val="0x1"/>
+    </comp>
+    <comp lib="1" loc="(380,190)" name="Pin">
+      <a name="label" val="e"/>
+    </comp>
+    <comp lib="1" loc="(520,150)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="label" val="o"/>
+      <a name="labelloc" val="east"/>
+      <a name="type" val="output"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="5" loc="(320,140)" name="Register">
+      <a name="trigger" val="high"/>
+    </comp>
+    <comp loc="(490,150)" name="03_1_Enabler"/>
+    <wire from="(230,140)" to="(290,140)"/>
+    <wire from="(230,180)" to="(250,180)"/>
+    <wire from="(250,150)" to="(250,180)"/>
+    <wire from="(250,150)" to="(290,150)"/>
+    <wire from="(290,190)" to="(300,190)"/>
+    <wire from="(300,160)" to="(300,190)"/>
+    <wire from="(320,140)" to="(400,140)"/>
+    <wire from="(380,190)" to="(390,190)"/>
+    <wire from="(390,160)" to="(390,190)"/>
+    <wire from="(390,160)" to="(400,160)"/>
+    <wire from="(490,150)" to="(520,150)"/>
+  </circuit>
+  <circuit name="R1">
+    <a name="appearance" val="custom"/>
+    <appear>
+      <rect fill="none" height="40" stroke="#000000" stroke-width="2" width="61" x="169" y="60"/>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="188" y="70">i</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="188" y="90">s</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="207" y="90">e</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="end" x="213" y="69">o</text>
+      <text dominant-baseline="top" font-family="SansSerif" font-size="12" text-anchor="middle" x="200" y="74">R1</text>
+      <visible-register height="10" path="/Register(320,140)" stroke-width="0" width="13" x="193" y="65"/>
+      <circ-port height="8" pin="230,140" width="8" x="186" y="56"/>
+      <circ-port height="8" pin="230,180" width="8" x="186" y="96"/>
+      <circ-port height="8" pin="380,190" width="8" x="206" y="96"/>
+      <circ-port height="10" pin="520,150" width="10" x="205" y="55"/>
+      <circ-anchor facing="east" height="6" width="6" x="227" y="97"/>
+    </appear>
+    <comp lib="1" loc="(230,140)" name="Pin">
+      <a name="label" val="i"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="1" loc="(230,180)" name="Pin">
+      <a name="label" val="s"/>
+    </comp>
+    <comp lib="1" loc="(290,190)" name="Constant">
+      <a name="value" val="0x1"/>
+    </comp>
+    <comp lib="1" loc="(380,190)" name="Pin">
+      <a name="label" val="e"/>
+    </comp>
+    <comp lib="1" loc="(520,150)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="label" val="o"/>
+      <a name="labelloc" val="east"/>
+      <a name="type" val="output"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="5" loc="(320,140)" name="Register">
+      <a name="trigger" val="high"/>
+    </comp>
+    <comp loc="(490,150)" name="03_1_Enabler"/>
+    <wire from="(230,140)" to="(290,140)"/>
+    <wire from="(230,180)" to="(250,180)"/>
+    <wire from="(250,150)" to="(250,180)"/>
+    <wire from="(250,150)" to="(290,150)"/>
+    <wire from="(290,190)" to="(300,190)"/>
+    <wire from="(300,160)" to="(300,190)"/>
+    <wire from="(320,140)" to="(400,140)"/>
+    <wire from="(380,190)" to="(390,190)"/>
+    <wire from="(390,160)" to="(390,190)"/>
+    <wire from="(390,160)" to="(400,160)"/>
+    <wire from="(490,150)" to="(520,150)"/>
+  </circuit>
+  <circuit name="TMP">
+    <a name="appearance" val="custom"/>
+    <appear>
+      <rect fill="none" height="40" stroke="#000000" stroke-width="2" width="61" x="169" y="60"/>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="188" y="70">i</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="188" y="90">s</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="207" y="90">e</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="end" x="213" y="69">o</text>
+      <text dominant-baseline="top" font-family="SansSerif" font-size="12" text-anchor="middle" x="200" y="74">TMP</text>
+      <visible-register height="10" path="/Register(320,140)" stroke-width="0" width="13" x="193" y="65"/>
+      <circ-port height="8" pin="230,140" width="8" x="186" y="56"/>
+      <circ-port height="8" pin="230,180" width="8" x="186" y="96"/>
+      <circ-port height="8" pin="380,190" width="8" x="206" y="96"/>
+      <circ-port height="10" pin="520,150" width="10" x="205" y="55"/>
+      <circ-anchor facing="east" height="6" width="6" x="227" y="97"/>
+    </appear>
+    <comp lib="1" loc="(230,140)" name="Pin">
+      <a name="label" val="i"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="1" loc="(230,180)" name="Pin">
+      <a name="label" val="s"/>
+    </comp>
+    <comp lib="1" loc="(290,190)" name="Constant">
+      <a name="value" val="0x1"/>
+    </comp>
+    <comp lib="1" loc="(380,190)" name="Pin">
+      <a name="label" val="e"/>
+    </comp>
+    <comp lib="1" loc="(520,150)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="label" val="o"/>
+      <a name="labelloc" val="east"/>
+      <a name="type" val="output"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="5" loc="(320,140)" name="Register">
+      <a name="trigger" val="high"/>
+    </comp>
+    <comp loc="(490,150)" name="03_1_Enabler"/>
+    <wire from="(230,140)" to="(290,140)"/>
+    <wire from="(230,180)" to="(250,180)"/>
+    <wire from="(250,150)" to="(250,180)"/>
+    <wire from="(250,150)" to="(290,150)"/>
+    <wire from="(290,190)" to="(300,190)"/>
+    <wire from="(300,160)" to="(300,190)"/>
+    <wire from="(320,140)" to="(400,140)"/>
+    <wire from="(380,190)" to="(390,190)"/>
+    <wire from="(390,160)" to="(390,190)"/>
+    <wire from="(390,160)" to="(400,160)"/>
+    <wire from="(490,150)" to="(520,150)"/>
+  </circuit>
+  <circuit name="ACC">
+    <a name="appearance" val="custom"/>
+    <appear>
+      <rect fill="none" height="40" stroke="#000000" stroke-width="2" width="61" x="169" y="60"/>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="188" y="70">i</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="188" y="90">s</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="start" x="207" y="90">e</text>
+      <text dominant-baseline="central" fill="#404040" font-family="SansSerif" font-size="10" text-anchor="end" x="213" y="69">o</text>
+      <text dominant-baseline="top" font-family="SansSerif" font-size="12" text-anchor="middle" x="200" y="74">ACC</text>
+      <visible-register height="10" path="/Register(320,140)" stroke-width="0" width="13" x="193" y="65"/>
+      <circ-port height="8" pin="230,140" width="8" x="186" y="56"/>
+      <circ-port height="8" pin="230,180" width="8" x="186" y="96"/>
+      <circ-port height="8" pin="380,190" width="8" x="206" y="96"/>
+      <circ-port height="10" pin="520,150" width="10" x="205" y="55"/>
+      <circ-anchor facing="east" height="6" width="6" x="227" y="97"/>
+    </appear>
+    <comp lib="1" loc="(230,140)" name="Pin">
+      <a name="label" val="i"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="1" loc="(230,180)" name="Pin">
+      <a name="label" val="s"/>
+    </comp>
+    <comp lib="1" loc="(290,190)" name="Constant">
+      <a name="value" val="0x1"/>
+    </comp>
+    <comp lib="1" loc="(380,190)" name="Pin">
+      <a name="label" val="e"/>
+    </comp>
+    <comp lib="1" loc="(520,150)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="label" val="o"/>
+      <a name="labelloc" val="east"/>
+      <a name="type" val="output"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="5" loc="(320,140)" name="Register">
+      <a name="trigger" val="high"/>
+    </comp>
+    <comp loc="(490,150)" name="03_1_Enabler"/>
+    <wire from="(230,140)" to="(290,140)"/>
+    <wire from="(230,180)" to="(250,180)"/>
+    <wire from="(250,150)" to="(250,180)"/>
+    <wire from="(250,150)" to="(290,150)"/>
+    <wire from="(290,190)" to="(300,190)"/>
+    <wire from="(300,160)" to="(300,190)"/>
+    <wire from="(320,140)" to="(400,140)"/>
+    <wire from="(380,190)" to="(390,190)"/>
+    <wire from="(390,160)" to="(390,190)"/>
+    <wire from="(390,160)" to="(400,160)"/>
+    <wire from="(490,150)" to="(520,150)"/>
   </circuit>
 </project>
